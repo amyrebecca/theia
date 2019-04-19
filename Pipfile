@@ -31,9 +31,11 @@ requests-oauthlib = "*"
 python_version = "3.7"
 
 [scripts]
-server = "bash -e ./start_server.sh"
+console = "python app/manage.py shell"
 create_local_db = "createdb -U theia -O theia theia"
 drop_local_db = "dropdb -U theia theia"
 makemigrations = "python app/manage.py makemigrations"
 migrate = "python app/manage.py migrate"
+server = "bash -e ./start_server.sh"
 tests = "pytest --cov=app"
+worker = "celery -A app.tasks worker --loglevel=info --pidfile=tmp/%n.pid --logfile=tmp/%n%I.log"
