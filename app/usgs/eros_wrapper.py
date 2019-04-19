@@ -3,6 +3,7 @@ from os import environ
 import json
 import requests
 
+
 class ErosWrapper():
     auth_token = None
 
@@ -15,10 +16,10 @@ class ErosWrapper():
 
         response = requests.post(
             self.api_url('login'),
-            params = {
+            params={
                 "jsonRequest": json.dumps(auth_data)
             },
-            headers = {
+            headers={
                 "Content-Type": "application/json"
             }
         ).json()
@@ -37,7 +38,7 @@ class ErosWrapper():
         print(self.auth_token)
         response = requests.post(
             self.api_url(''),
-            headers = {
+            headers={
                 "X-Auth-Token": self.auth_token
             }
         ).json()
